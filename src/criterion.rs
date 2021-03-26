@@ -11,6 +11,8 @@ use criterion::profiler::Profiler;
 use std::fs::File;
 #[cfg(feature = "protobuf")]
 use std::io::Write;
+#[cfg(feature = "protobuf")]
+use std::marker::PhantomData;
 use std::os::raw::c_int;
 use std::path::Path;
 
