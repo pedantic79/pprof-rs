@@ -42,6 +42,7 @@ impl<'a, 'b> PProfProfiler<'a, 'b> {
 
 impl<'a, 'b> Profiler for PProfProfiler<'a, 'b> {
     fn start_profiling(&mut self, _benchmark_id: &str, _benchmark_dir: &Path) {
+        panic!("HELLO");
         self.active_profiler = Some(ProfilerGuard::new(self.frequency).unwrap());
     }
 
