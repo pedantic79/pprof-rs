@@ -21,7 +21,7 @@ pub enum Output<'a> {
     Flamegraph(Option<FlamegraphOptions<'a>>),
 
     #[cfg(feature = "protobuf")]
-    Protobuf(PhantomData<'a, ()>),
+    Protobuf(PhantomData<'a, u8>),
 }
 
 pub struct PProfProfiler<'a, 'b> {
