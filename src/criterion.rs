@@ -50,7 +50,7 @@ impl<'a, 'b> Profiler for PProfProfiler<'a, 'b> {
             #[cfg(feature = "flamegraph")]
             Output::Flamegraph(_) => "flamegraph.svg",
             #[cfg(feature = "protobuf")]
-            Output::Protobuf => "profile.pb",
+            Output::Protobuf(_) => "profile.pb",
         };
         let output_path = benchmark_dir.join(filename);
         let output_file = File::create(&output_path).unwrap_or_else(|_| {
@@ -73,7 +73,7 @@ impl<'a, 'b> Profiler for PProfProfiler<'a, 'b> {
                 }
 
                 #[cfg(feature = "protobuf")]
-                Output::Protobuf => {
+                Output::Protobuf(_) => {
                     let mut output_file = output_file;
 
                     let profile = profiler.report().build().unwrap().pprof().unwrap();
