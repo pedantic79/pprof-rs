@@ -42,11 +42,13 @@ impl<'a, 'b> PProfProfiler<'a, 'b> {
 
 impl<'a, 'b> Profiler for PProfProfiler<'a, 'b> {
     fn start_profiling(&mut self, _benchmark_id: &str, _benchmark_dir: &Path) {
-        panic!("HELLO");
+        eprintln!("HELLO");
         self.active_profiler = Some(ProfilerGuard::new(self.frequency).unwrap());
     }
 
     fn stop_profiling(&mut self, _benchmark_id: &str, benchmark_dir: &Path) {
+        eprintln!("GOODBYE");
+
         std::fs::create_dir_all(benchmark_dir).unwrap();
 
         let filename = match self.output {
